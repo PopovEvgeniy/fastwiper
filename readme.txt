@@ -2,7 +2,7 @@
 
                 Free space wiping tool by Popov Evgeniy Alekseyevich             
 
-                           Version 0.7
+                           Version 0.7.0.1
 
 System requirement
 
@@ -24,16 +24,16 @@ Usage program
 This software is console/text interface program.
 It takes amount of wipe pass and drive letter(for example:c) as command line argument.
 
-Recomend amount of wipe pass
+Recommend amount of wipe pass
 
-Recomend amount of wipe pass depend on you paranoia level. ;)
+Recommend amount of wipe pass depend on you paranoia level. ;)
 Wipe time also depend on amount of wipe pass.
 
 1 - Normal for most case.
 3 - For secure erase important evidence.
-5 or more - For total destroy all shit. Also recomend for old hard drives.
+5 or more - For total destroy all shit. Also recommend for old hard drives.
 
-Filesystem compatibility
+File system compatibility
 
 This program don't correctly work with FAT and FAT32.
 
@@ -63,3 +63,4 @@ Version history
 0.4 - Small changes. First public version
 0.5 - Memory usage has been reduced
 0.6 - 0.7 - Small changes
+0.7.0.1 – Documentation was updated
