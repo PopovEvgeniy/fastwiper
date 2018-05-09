@@ -2,7 +2,7 @@
 
                 Free space wiping tool by Popov Evgeniy Alekseyevich             
 
-                           Version 0.7.0.1
+                           Version 0.7.1
 
 System requirement
 
@@ -13,7 +13,7 @@ Operation system: Microsoft Windows 2000 or higher
 Program description
 
 This program let you wipe free space on storage media. It will wipe by zero bytes.
-Deleted files can't be recover with special software after finish wipe free space.
+Deleted files can't be recovered with special software after finish wipe free space.
 
 License
 
@@ -64,3 +64,4 @@ Version history
 0.5 - Memory usage has been reduced
 0.6 - 0.7 - Small changes
 0.7.0.1 – Documentation was updated
+0.7.1 - Small changes
