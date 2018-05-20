@@ -13,6 +13,7 @@ void show_end_message();
 void show_pass(const unsigned long int pass,const unsigned long int total);
 void show_progress(const unsigned long long int start,const unsigned long long int stop);
 void check_argument(const char *target);
+void check_drive(const char *drive);
 unsigned long int get_pass(const char *target);
 char *get_memory(const size_t length);
 int create_temp_file(const char drive);
@@ -20,12 +21,13 @@ unsigned long long int get_wiping_size(const char drive);
 void corrupt_file(const int target,const unsigned long long int length);
 void remove_temp_file(const char drive);
 void wipe_free_space(const char drive);
+void do_wipe(const unsigned long int passes,const char drive);
 
 void show_intro()
 {
  printf("\n");
  puts("FAST WIPER");
- puts("Version 0.7.1");
+ puts("Version 0.7.4");
  puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2018 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
  printf("\n");
@@ -60,15 +62,25 @@ void show_progress(const unsigned long long int start,const unsigned long long i
 void check_argument(const char *target)
 {
  size_t index;
- for (index=strlen(target);index>0;index--)
+ for (index=strlen(target);index>0;--index)
  {
   if (isdigit(target[index-1])==0)
   {
-   puts("Can't decode argument");
+   puts("Can't decode command line argument");
    exit(4);
   }
 
  }
+
+}
+
+void check_drive(const char *drive)
+{
+  if ((strlen(drive)!=1)||(isalpha(drive[0])==0))
+  {
+   puts("Can't decode command line argument");
+   exit(4);
+  }
 
 }
 
@@ -170,9 +182,20 @@ void wipe_free_space(const char drive)
  remove_temp_file(drive);
 }
 
+void do_wipe(const unsigned long int passes,const char drive)
+{
+ unsigned long int index;
+ show_start_message();
+ for (index=0;index<passes;++index)
+ {
+  show_pass(index,passes);
+  wipe_free_space(drive);
+ }
+ show_end_message();
+}
+
 int main(int argc, char *argv[])
 {
- unsigned long int index,pass;
  show_intro();
  if (argc!=3)
  {
@@ -180,28 +203,8 @@ int main(int argc, char *argv[])
  }
  else
  {
-  if (strlen(argv[2])!=1)
-  {
-   puts("Can't decode command line argument");
-   exit(4);
-  }
-  else
-  {
-   if (isalpha(argv[2][0])==0)
-   {
-    puts("Can't decode command line argument");
-    exit(4);
-   }
-   pass=get_pass(argv[1]);
-   show_start_message();
-   for (index=0;index<pass;index++)
-   {
-    show_pass(index,pass);
-    wipe_free_space(argv[2][0]);
-   }
-   show_end_message();
-  }
-
+   check_drive(argv[2]);
+   do_wipe(get_pass(argv[1]),argv[2][0]);
  }
  return 0;
 }

@@ -2,13 +2,13 @@
 
                 Free space wiping tool by Popov Evgeniy Alekseyevich             
 
-                           Version 0.7.1
+                           Version 0.7.4
 
 System requirement
 
-Operation system: Microsoft Windows 2000 or higher
+Operation system: Microsoft Windows XP or higher
 9 megabytes of free RAM
-48 kilobytes free space on storage media
+112 kilobytes free space on storage media
 
 Program description
 
@@ -64,4 +64,4 @@ Version history
 0.5 - Memory usage has been reduced
 0.6 - 0.7 - Small changes
 0.7.0.1 – Documentation was updated
-0.7.1 - Small changes
+0.7.1 - 0.7.4 - Small changes
