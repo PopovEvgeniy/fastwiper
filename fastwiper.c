@@ -27,7 +27,7 @@ void show_intro()
 {
  printf("\n");
  puts("FAST WIPER");
- puts("Version 0.7.4");
+ puts("Version 0.7.5");
  puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2018 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
  printf("\n");
@@ -205,6 +205,7 @@ int main(int argc, char *argv[])
  {
    check_drive(argv[2]);
    do_wipe(get_pass(argv[1]),argv[2][0]);
+   remove_temp_file(argv[2][0]);
  }
  return 0;
 }

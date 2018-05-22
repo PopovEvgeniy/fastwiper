@@ -2,7 +2,7 @@
 
                 Free space wiping tool by Popov Evgeniy Alekseyevich             
 
-                           Version 0.7.4
+                           Version 0.7.5
 
 System requirement
 
@@ -65,3 +65,4 @@ Version history
 0.6 - 0.7 - Small changes
 0.7.0.1 – Documentation was updated
 0.7.1 - 0.7.4 - Small changes
+0.7.5 - Small bug was fixed
