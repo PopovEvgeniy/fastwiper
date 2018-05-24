@@ -3,11 +3,14 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <windows.h>
 
 void show_intro();
+void show_help();
 void show_start_message();
 void show_end_message();
 void show_pass(const unsigned long int pass,const unsigned long int total);
@@ -22,15 +25,21 @@ void corrupt_file(const int target,const unsigned long long int length);
 void remove_temp_file(const char drive);
 void wipe_free_space(const char drive);
 void do_wipe(const unsigned long int passes,const char drive);
+void work(const char *passes,const char *drive);
 
 void show_intro()
 {
  printf("\n");
  puts("FAST WIPER");
- puts("Version 0.7.5");
+ puts("Version 0.8.2");
  puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2018 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
  printf("\n");
+}
+
+void show_help()
+{
+ puts("You must get amount of wipe pass and drive letter as command line argument!");
 }
 
 void show_start_message()
@@ -111,10 +120,10 @@ char *get_memory(const size_t length)
 
 int create_temp_file(const char drive)
 {
- char name[13]="a:\\trash.tmp";
+ char name[]="a:\\trash.tmp";
  int target;
  name[0]=drive;
- target=open(name,O_BINARY|O_WRONLY|O_CREAT);
+ target=open(name,O_BINARY|O_RDWR|O_CREAT,S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH);
  if(target==-1)
  {
   puts("Can't create temporary file");
@@ -126,7 +135,7 @@ int create_temp_file(const char drive)
 unsigned long long int get_wiping_size(const char drive)
 {
  unsigned long long int length;
- char disk[4]="a:\\";
+ char disk[]="a:\\";
  disk[0]=drive;
  if(GetDiskFreeSpaceEx((LPCSTR)disk,NULL,NULL,(PULARGE_INTEGER*)&length)==FALSE) length=0;
  return length;
@@ -160,7 +169,7 @@ void corrupt_file(const int target,const unsigned long long int length)
 
 void remove_temp_file(const char drive)
 {
- char name[13]="a:\\trash.tmp";
+ char name[]="a:\\trash.tmp";
  name[0]=drive;
  if (remove(name)==0)
  {
@@ -176,9 +185,7 @@ void remove_temp_file(const char drive)
 
 void wipe_free_space(const char drive)
 {
- int target;
- target=create_temp_file(drive);
- corrupt_file(target,get_wiping_size(drive));
+ corrupt_file(create_temp_file(drive),get_wiping_size(drive));
  remove_temp_file(drive);
 }
 
@@ -194,18 +201,22 @@ void do_wipe(const unsigned long int passes,const char drive)
  show_end_message();
 }
 
+void work(const char *passes,const char *drive)
+{
+ check_drive(drive);
+ do_wipe(get_pass(passes),drive[0]);
+}
+
 int main(int argc, char *argv[])
 {
  show_intro();
  if (argc!=3)
  {
-  puts("You must get amount of wipe pass and drive letter as command line argument!");
+  show_help();
  }
  else
  {
-   check_drive(argv[2]);
-   do_wipe(get_pass(argv[1]),argv[2][0]);
-   remove_temp_file(argv[2][0]);
+  work(argv[1],argv[2]);
  }
  return 0;
 }
