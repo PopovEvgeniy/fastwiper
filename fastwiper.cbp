@@ -6,20 +6,38 @@
 		<Option pch_mode="2" />
 		<Option compiler="mingw-w64_32_bit" />
 		<Build>
-			<Target title="Release">
+			<Target title="Windows 32 bit">
 				<Option output="bin/Release/32/fastwiper" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="mingw-w64_32_bit" />
+				<Compiler>
+					<Add option="-m32" />
+				</Compiler>
+				<Linker>
+					<Add option="-static-libgcc" />
+					<Add option="-static" />
+					<Add option="-m32" />
+				</Linker>
+			</Target>
+			<Target title="Windows 64 bit">
+				<Option output="bin/Release/64/fastwiper" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="mingw-w64_64_bit" />
+				<Compiler>
+					<Add option="-m64" />
+				</Compiler>
+				<Linker>
+					<Add option="-static-libgcc" />
+					<Add option="-static" />
+					<Add option="-m64" />
+				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Linker>
-			<Add option="-static-libgcc" />
-			<Add option="-static" />
-		</Linker>
 		<Unit filename="fastwiper.c">
 			<Option compilerVar="CC" />
 		</Unit>

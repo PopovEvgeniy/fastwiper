@@ -2,8 +2,7 @@
 
                 Free space wiping tool by Popov Evgeniy Alekseyevich             
 
-                           Version 0.8.2
-
+                           Version 0.8.2.1
 System requirement
 
 Operation system: Microsoft Windows XP or higher
@@ -69,3 +68,4 @@ Version history
 0.7.6 - 0.8 - Small changes
 0.8.1 - Small bug was fixed
 0.8.2 - Small changes
+0.8.2.1 - Project file was updated
