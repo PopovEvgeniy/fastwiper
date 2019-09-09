@@ -3,7 +3,6 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -31,8 +30,8 @@ void show_intro()
 {
  printf("\n");
  puts("FAST WIPER");
- puts("Version 0.8.2");
- puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2018 years");
+ puts("Version 0.8.4");
+ puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2019 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
  printf("\n");
 }
@@ -85,10 +84,19 @@ void check_argument(const char *target)
 
 void check_drive(const char *drive)
 {
-  if ((strlen(drive)!=1)||(isalpha(drive[0])==0))
+  if (strlen(drive)!=1)
   {
    puts("Can't decode command line argument");
    exit(4);
+  }
+  else
+  {
+   if (isalpha(drive[0])==0)
+   {
+    puts("Can't decode command line argument");
+    exit(4);
+   }
+
   }
 
 }
