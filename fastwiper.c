@@ -15,6 +15,7 @@ void show_end_message();
 void show_pass(const unsigned long int pass,const unsigned long int total);
 void show_progress(const unsigned long long int start,const unsigned long long int stop);
 void check_argument(const char *target);
+unsigned char check_drive_letter(const char *drive);
 void check_drive(const char *drive);
 unsigned long int get_pass(const char *target);
 char *get_memory(const size_t length);
@@ -30,7 +31,7 @@ void show_intro()
 {
  printf("\n");
  puts("FAST WIPER");
- puts("Version 0.8.4");
+ puts("Version 0.8.5");
  puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2019 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
  printf("\n");
@@ -82,21 +83,27 @@ void check_argument(const char *target)
 
 }
 
+unsigned char check_drive_letter(const char *drive)
+{
+ unsigned char result;
+ result=1;
+ if (strlen(drive)!=1)
+ {
+  result=0;
+ }
+ else
+ {
+  if (isalpha(drive[0])==0) result=0;
+ }
+ return result;
+}
+
 void check_drive(const char *drive)
 {
-  if (strlen(drive)!=1)
+  if (check_drive_letter(drive)==0)
   {
    puts("Can't decode command line argument");
    exit(4);
-  }
-  else
-  {
-   if (isalpha(drive[0])==0)
-   {
-    puts("Can't decode command line argument");
-    exit(4);
-   }
-
   }
 
 }
