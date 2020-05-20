@@ -13,7 +13,7 @@ void show_help();
 void show_start_message();
 void show_end_message();
 void show_pass(const unsigned long int pass,const unsigned long int total);
-void show_progress(const unsigned long long int start,const unsigned long long int stop);
+void show_progress(const unsigned long long int start,const unsigned long long int end);
 void check_argument(const char *target);
 unsigned char check_drive_letter(const char *drive);
 void check_drive(const char *drive);
@@ -29,12 +29,12 @@ void work(const char *passes,const char *drive);
 
 void show_intro()
 {
- printf("\n");
+ putchar('\n');
  puts("FAST WIPER");
- puts("Version 0.8.5");
- puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2019 years");
+ puts("Version 0.8.6");
+ puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2020 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
- printf("\n");
+ putchar('\n');
 }
 
 void show_help()
@@ -170,7 +170,7 @@ void corrupt_file(const int target,const unsigned long long int length)
   if(length-index<=(unsigned long long int)block_length) block=(size_t)length-(size_t)index;
   if(write(target,data,block)==-1)
   {
-   printf("\n");
+   putchar('\n');
    puts("Can't totally wipe the free space");
    break;
   }
@@ -178,7 +178,7 @@ void corrupt_file(const int target,const unsigned long long int length)
   show_progress(index,length);
  }
  free(data);
- printf("\n");
+ putchar('\n');
  close(target);
 }
 

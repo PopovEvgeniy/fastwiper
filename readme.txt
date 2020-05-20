@@ -2,7 +2,7 @@
 
                 Free space wiping tool by Popov Evgeniy Alekseyevich             
 
-                           Version 0.8.5
+                           Version 0.8.6
 System requirement
 
 Operation system: Microsoft Windows XP or higher
@@ -47,7 +47,7 @@ Exit codes
 
 Source code
 
-The program source code was compiled under Open Watcom.
+The program source code was compiled under TDM-GCC.
 But you can do it under any modern C compiler.
 
 Contact
@@ -69,4 +69,4 @@ Version history
 0.8.1 - Small bug was fixed
 0.8.2 - Small changes
 0.8.2.1 - Project file was updated
-0.8.3 - 0.8.5 - Small changes
+0.8.3 - 0.8.6 - Small changes
