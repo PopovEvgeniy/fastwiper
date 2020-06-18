@@ -31,7 +31,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FAST WIPER");
- puts("Version 0.8.6");
+ puts("Version 0.8.8");
  puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2020 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -54,7 +54,7 @@ void show_end_message()
 
 void show_pass(const unsigned long int pass,const unsigned long int total)
 {
- printf("Current wipe pass: %ld Total wipe passes: %ld",pass+1,total);
+ printf("Current wipe pass: %lu Total wipe passes: %lu",pass+1,total);
  putchar('\n');
 }
 
@@ -64,16 +64,17 @@ void show_progress(const unsigned long long int start,const unsigned long long i
  progress=start+1;
  progress*=100;
  progress/=end;
- printf("\r");
- printf("Amount of processed bytes: %lld from %lld. Progress:%lld%%",start,end,progress);
+ putchar('\r');
+ printf("Amount of processed bytes: %llu from %llu. Progress:%llu%%",start,end,progress);
 }
 
 void check_argument(const char *target)
 {
- size_t index;
- for (index=strlen(target);index>0;--index)
+ size_t index,length;
+ length=strlen(target);
+ for (index=0;index<length;++index)
  {
-  if (isdigit(target[index-1])==0)
+  if (isdigit(target[index])==0)
   {
    puts("Can't decode command line argument");
    exit(4);
