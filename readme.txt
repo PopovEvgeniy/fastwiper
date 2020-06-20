@@ -2,12 +2,12 @@
 
                 Free space wiping tool by Popov Evgeniy Alekseyevich             
 
-                           Version 0.8.8
+                           Version 0.9
 System requirement
 
 Operation system: Microsoft Windows XP or higher
 9 megabytes of free RAM
-112 kilobytes free space on storage media
+48 kilobytes free space on storage media
 
 Program description
 
@@ -47,7 +47,7 @@ Exit codes
 
 Source code
 
-The program source code was compiled under TDM-GCC.
+The program source code was compiled under Open Watcom V2 Fork.
 But you can do it under any modern C compiler.
 
 Contact
@@ -69,4 +69,5 @@ Version history
 0.8.1 - Small bug was fixed
 0.8.2 - Small changes
 0.8.2.1 - Project file was updated
-0.8.3 - 0.8.8 - Small changes
+0.8.3 - 0.8.9 - Small changes
+0.9 - Source code was recompiled under Open Watcom V2 Fork

@@ -31,7 +31,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FAST WIPER");
- puts("Version 0.8.8");
+ puts("Version 0.9");
  puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2020 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -153,7 +153,7 @@ unsigned long long int get_wiping_size(const char drive)
  unsigned long long int length;
  char disk[]="a:\\";
  disk[0]=drive;
- if(GetDiskFreeSpaceEx((LPCSTR)disk,NULL,NULL,(PULARGE_INTEGER*)&length)==FALSE) length=0;
+ if(GetDiskFreeSpaceExA((LPCSTR)disk,NULL,NULL,(PULARGE_INTEGER*)&length)==FALSE) length=0;
  return length;
 }
 
