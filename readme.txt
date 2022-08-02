@@ -2,7 +2,7 @@
 
                 Free space wiping tool by Popov Evgeniy Alekseyevich             
 
-                           Version 0.9
+                           Version 0.9.1
 System requirement
 
 Operation system: Microsoft Windows XP or higher
@@ -23,10 +23,10 @@ Usage program
 This software is console/text interface program.
 It takes amount of wipe pass and drive letter(for example:c) as command line argument.
 
-Recommend amount of wipe pass
+Recommend amount of wipe passes
 
-Recommend amount of wipe pass depend on you paranoia level. ;)
-Wipe time also depend on amount of wipe pass.
+Recommend amount of wipe passes depend on your paranoia level. ;)
+Wipe time also depend on amount of wipe passes.
 
 1 - Normal for most case.
 3 - For secure erase important evidence.
@@ -34,7 +34,7 @@ Wipe time also depend on amount of wipe pass.
 
 File system compatibility
 
-This program don't correctly work with FAT and FAT32.
+This program can't correctly work with FAT and FAT32.
 
 Exit codes
 
@@ -43,11 +43,11 @@ Exit codes
 2 - Can't allocate memory.
 3 - Can't destroy temporary file.
 4 - Can't decode command line argument.
-5 - Invalid amount of wipe pass.
+5 - Invalid amount of wipe passes.
 
 Source code
 
-The program source code was compiled under Open Watcom V2 Fork.
+The program source code compiled under Open Watcom V2 Fork.
 But you can do it under any modern C compiler.
 
 Contact
@@ -60,14 +60,15 @@ Version history
 0.2 - Small changes
 0.3 - New command line argument added
 0.4 - Small changes. First public version
-0.5 - Memory usage has been reduced
+0.5 - Memory usage reduced
 0.6 - 0.7 - Small changes
-0.7.0.1 – Documentation was updated
+0.7.0.1 – Documentation updated
 0.7.1 - 0.7.4 - Small changes
-0.7.5 - Small bug was fixed
+0.7.5 - Small bug fixed
 0.7.6 - 0.8 - Small changes
-0.8.1 - Small bug was fixed
+0.8.1 - Small bug fixed
 0.8.2 - Small changes
-0.8.2.1 - Project file was updated
+0.8.2.1 - Project file updated
 0.8.3 - 0.8.9 - Small changes
-0.9 - Source code was recompiled under Open Watcom V2 Fork
+0.9 - Source code recompiled under Open Watcom V2 Fork
+0.9.1 - Small changes

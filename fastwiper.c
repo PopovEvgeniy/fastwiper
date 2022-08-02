@@ -15,7 +15,6 @@ void show_end_message();
 void show_pass(const unsigned long int pass,const unsigned long int total);
 void show_progress(const unsigned long long int start,const unsigned long long int end);
 void check_argument(const char *target);
-unsigned char check_drive_letter(const char *drive);
 void check_drive(const char *drive);
 unsigned long int get_pass(const char *target);
 char *get_memory(const size_t length);
@@ -31,8 +30,8 @@ void show_intro()
 {
  putchar('\n');
  puts("FAST WIPER");
- puts("Version 0.9");
- puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2020 years");
+ puts("Version 0.9.1");
+ puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2022 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
 }
@@ -84,28 +83,19 @@ void check_argument(const char *target)
 
 }
 
-unsigned char check_drive_letter(const char *drive)
-{
- unsigned char result;
- result=1;
- if (strlen(drive)!=1)
- {
-  result=0;
- }
- else
- {
-  if (isalpha(drive[0])==0) result=0;
- }
- return result;
-}
-
 void check_drive(const char *drive)
 {
-  if (check_drive_letter(drive)==0)
-  {
-   puts("Can't decode command line argument");
-   exit(4);
-  }
+ char target;
+ target='0';
+ if (strlen(drive)==1)
+ {
+  target=drive[0];
+ }
+ if (isalpha(target)==0)
+ {
+  puts("Can't decode command line argument");
+  exit(4);
+ }
 
 }
 
@@ -116,7 +106,7 @@ unsigned long int get_pass(const char *target)
  pass=atol(target);
  if (pass==0)
  {
-  puts("You must give positive non-zero value as amount of wipe pass");
+  puts("You must give positive non-zero value as amount of wipe passes");
   exit(5);
  }
  return pass;
@@ -153,7 +143,10 @@ unsigned long long int get_wiping_size(const char drive)
  unsigned long long int length;
  char disk[]="a:\\";
  disk[0]=drive;
- if(GetDiskFreeSpaceExA((LPCSTR)disk,NULL,NULL,(PULARGE_INTEGER*)&length)==FALSE) length=0;
+ if(GetDiskFreeSpaceExA((LPCSTR)disk,NULL,NULL,(PULARGE_INTEGER*)&length)==FALSE)
+ {
+  length=0;
+ }
  return length;
 }
 
@@ -168,7 +161,10 @@ void corrupt_file(const int target,const unsigned long long int length)
  data=get_memory(block);
  while(index<length)
  {
-  if(length-index<=(unsigned long long int)block_length) block=(size_t)length-(size_t)index;
+  if(length-index<=(unsigned long long int)block_length)
+  {
+   block=(size_t)length-(size_t)index;
+  }
   if(write(target,data,block)==-1)
   {
    putchar('\n');
