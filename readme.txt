@@ -2,10 +2,10 @@
 
                 Free space wiping tool by Popov Evgeniy Alekseyevich             
 
-                           Version 0.9.1
+                           Version 0.9.2
 System requirement
 
-Operation system: Microsoft Windows XP or higher
+Operating system: Microsoft Windows XP or higher
 9 megabytes of free RAM
 48 kilobytes free space on storage media
 
@@ -71,4 +71,4 @@ Version history
 0.8.2.1 - Project file updated
 0.8.3 - 0.8.9 - Small changes
 0.9 - Source code recompiled under Open Watcom V2 Fork
-0.9.1 - Small changes
+0.9.1 - 0.9.2 - Small changes

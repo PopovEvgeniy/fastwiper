@@ -22,7 +22,6 @@ int create_temp_file(const char drive);
 unsigned long long int get_wiping_size(const char drive);
 void corrupt_file(const int target,const unsigned long long int length);
 void remove_temp_file(const char drive);
-void wipe_free_space(const char drive);
 void do_wipe(const unsigned long int passes,const char drive);
 void work(const char *passes,const char *drive);
 
@@ -30,7 +29,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FAST WIPER");
- puts("Version 0.9.1");
+ puts("Version 0.9.2");
  puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2022 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -195,12 +194,6 @@ void remove_temp_file(const char drive)
 
 }
 
-void wipe_free_space(const char drive)
-{
- corrupt_file(create_temp_file(drive),get_wiping_size(drive));
- remove_temp_file(drive);
-}
-
 void do_wipe(const unsigned long int passes,const char drive)
 {
  unsigned long int index;
@@ -208,7 +201,8 @@ void do_wipe(const unsigned long int passes,const char drive)
  for (index=0;index<passes;++index)
  {
   show_pass(index,passes);
-  wipe_free_space(drive);
+  corrupt_file(create_temp_file(drive),get_wiping_size(drive));
+  remove_temp_file(drive);
  }
  show_end_message();
 }
