@@ -2,7 +2,7 @@
 
                 Free space wiping tool by Popov Evgeniy Alekseyevich             
 
-                           Version 0.9.2
+                           Version 0.9.2.1
 System requirement
 
 Operating system: Microsoft Windows XP or higher
@@ -20,17 +20,17 @@ This program distributed under GNU GENERAL PUBLIC LICENSE.
 
 Usage program
 
-This software is console/text interface program.
-It takes amount of wipe pass and drive letter(for example:c) as command line argument.
+This software is a console/text interface program.
+It takes the amount of wipe pass and drive letter(for example:c) as command line argument.
 
-Recommend amount of wipe passes
+Recommend the amount of wipe passes
 
-Recommend amount of wipe passes depend on your paranoia level. ;)
-Wipe time also depend on amount of wipe passes.
+Recommend the amount of wipe passes depend on your paranoia level. ;)
+Wipe time also depend on the amount of wipe passes.
 
 1 - Normal for most case.
-3 - For secure erase important evidence.
-5 or more - For total destroy all shit. Also recommend for old hard drives.
+3 - Secure erase important evidence.
+5 or more - Total destroy all shit. Also recommend for old hard drives.
 
 File system compatibility
 
@@ -72,3 +72,4 @@ Version history
 0.8.3 - 0.8.9 - Small changes
 0.9 - Source code recompiled under Open Watcom V2 Fork
 0.9.1 - 0.9.2 - Small changes
+0.9.2.1 – Documentation updated
