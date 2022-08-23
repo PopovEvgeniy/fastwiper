@@ -2,7 +2,7 @@
 
                 Free space wiping tool by Popov Evgeniy Alekseyevich             
 
-                           Version 0.9.2.1
+                           Version 0.9.4
 System requirement
 
 Operating system: Microsoft Windows XP or higher
@@ -23,27 +23,27 @@ Usage program
 This software is a console/text interface program.
 It takes the amount of wipe pass and drive letter(for example:c) as command line argument.
 
-Recommend the amount of wipe passes
+Recommend the amount of wipe pass
 
-Recommend the amount of wipe passes depend on your paranoia level. ;)
-Wipe time also depend on the amount of wipe passes.
+Recommend the amount of wipe pass to depend on your paranoia level. ;)
+Wipe time also depend on the amount of wipe pass.
 
 1 - Normal for most case.
-3 - Secure erase important evidence.
+3 - Securely destroy important evidence.
 5 or more - Total destroy all shit. Also recommend for old hard drives.
 
 File system compatibility
 
-This program can't correctly work with FAT and FAT32.
+This program can't correctly working with FAT and FAT32.
 
 Exit codes
 
 0 - Operation successfully complete.
-1 - Can't create temporary file.
+1 - Can't create the temporary file.
 2 - Can't allocate memory.
-3 - Can't destroy temporary file.
+3 - Can't destroy the temporary file.
 4 - Can't decode command line argument.
-5 - Invalid amount of wipe passes.
+5 - Invalid amount of wipe pass.
 
 Source code
 
@@ -73,3 +73,4 @@ Version history
 0.9 - Source code recompiled under Open Watcom V2 Fork
 0.9.1 - 0.9.2 - Small changes
 0.9.2.1 – Documentation updated
+0.9.3 - 0.9.4 - Small changes
