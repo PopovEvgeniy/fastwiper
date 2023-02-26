@@ -40,8 +40,8 @@ void show_intro()
 {
  putchar('\n');
  puts("FAST WIPER");
- puts("Version 0.9.4");
- puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2022 years");
+ puts("Version 0.9.5");
+ puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2023 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
 }
@@ -55,8 +55,7 @@ void show_pass(const unsigned long int pass,const unsigned long int total)
 void show_progress(const unsigned long long int start,const unsigned long long int end)
 {
  unsigned long long int progress;
- progress=start+1;
- progress*=100;
+ progress=(start+1)*100;
  progress/=end;
  putchar('\r');
  printf("Amount of processed bytes: %llu from %llu. Progress:%llu%%",start,end,progress);

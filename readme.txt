@@ -2,7 +2,7 @@
 
                 Free space wiping tool by Popov Evgeniy Alekseyevich             
 
-                           Version 0.9.4
+                           Version 0.9.5
 System requirement
 
 Operating system: Microsoft Windows XP or higher
@@ -21,7 +21,7 @@ This program distributed under GNU GENERAL PUBLIC LICENSE.
 Usage program
 
 This software is a console/text interface program.
-It takes the amount of wipe pass and drive letter(for example:c) as command line argument.
+It takes the amount of wipe pass and drive letter (for example:c) as command line argument.
 
 Recommend the amount of wipe pass
 
@@ -34,7 +34,7 @@ Wipe time also depend on the amount of wipe pass.
 
 File system compatibility
 
-This program can't correctly working with FAT and FAT32.
+This program can't correctly work with FAT and FAT32.
 
 Exit codes
 
@@ -73,4 +73,4 @@ Version history
 0.9 - Source code recompiled under Open Watcom V2 Fork
 0.9.1 - 0.9.2 - Small changes
 0.9.2.1 – Documentation updated
-0.9.3 - 0.9.4 - Small changes
+0.9.3 - 0.9.5 - Small changes
