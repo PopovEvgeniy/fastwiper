@@ -2,7 +2,7 @@
 
                 Free space wiping tool by Popov Evgeniy Alekseyevich             
 
-                           Version 0.9.8
+                           Version 0.9.9
 System requirement
 
 Operating system: Microsoft Windows 2000 or higher
@@ -76,4 +76,4 @@ Version history
 0.9.3 - 0.9.5 - Small changes
 0.9.6 - Memory usage reduced
 0.9.7 - Command line options changed
-0.9.8 - Small changes
+0.9.8 - 0.9.9 - Small changes
