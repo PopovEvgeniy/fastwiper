@@ -2,12 +2,11 @@
 
                 Free space wiping tool by Popov Evgeniy Alekseyevich             
 
-                           Version 0.9.5
+                           Version 0.9.8
 System requirement
 
-Operating system: Microsoft Windows XP or higher
-9 megabytes of free RAM
-48 kilobytes free space on storage media
+Operating system: Microsoft Windows 2000 or higher
+1 megabyte of free RAM
 
 Program description
 
@@ -22,6 +21,7 @@ Usage program
 
 This software is a console/text interface program.
 It takes the amount of wipe pass and drive letter (for example:c) as command line argument.
+Amount of wipe pass is optional argument. Amount of wipe pass is 1 by default.
 
 Recommend the amount of wipe pass
 
@@ -47,8 +47,8 @@ Exit codes
 
 Source code
 
-The program source code compiled under Open Watcom V2 Fork.
-But you can do it under any modern C compiler.
+The source code compiled under Open Watcom V2 Fork.
+But you can compile it under any modern C compiler.
 
 Contact
 
@@ -74,3 +74,6 @@ Version history
 0.9.1 - 0.9.2 - Small changes
 0.9.2.1 – Documentation updated
 0.9.3 - 0.9.5 - Small changes
+0.9.6 - Memory usage reduced
+0.9.7 - Command line options changed
+0.9.8 - Small changes

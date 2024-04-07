@@ -9,6 +9,7 @@
 #include <windows.h>
 
 void show_intro();
+void show_help();
 void show_pass(const unsigned long int pass,const unsigned long int total);
 void show_progress(const unsigned long long int start,const unsigned long long int end);
 void check_argument(const char *target);
@@ -25,13 +26,17 @@ void work(const char *passes,const char *drive);
 int main(int argc, char *argv[])
 {
  show_intro();
- if (argc!=3)
+ switch (argc)
  {
-  puts("You must give amount of wipe pass and drive letter as command line arguments!");
- }
- else
- {
+  case 3:
   work(argv[1],argv[2]);
+  break;
+  case 2:
+  work("1",argv[1]);
+  break;
+  default:
+  show_help();
+  break;
  }
  return 0;
 }
@@ -40,10 +45,16 @@ void show_intro()
 {
  putchar('\n');
  puts("FAST WIPER");
- puts("Version 0.9.5");
- puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2023 years");
+ puts("Version 0.9.8");
+ puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2024 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
+}
+
+void show_help()
+{
+ puts("You must give amount of wipe pass and drive letter as command line arguments!");
+ puts("Amount of wipe pass is optional argument. Amount of wipe pass is 1 by default");
 }
 
 void show_pass(const unsigned long int pass,const unsigned long int total)
@@ -123,7 +134,7 @@ int create_temp_file(const char drive)
  char name[]="a:\\trash.tmp";
  int target;
  name[0]=drive;
- target=open(name,O_BINARY|O_RDWR|O_CREAT,S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH);
+ target=open(name,O_WRONLY|O_CREAT|O_BINARY,S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH);
  if(target==-1)
  {
   puts("Can't create temporary file");
@@ -146,16 +157,15 @@ unsigned long long int get_wiping_size(const char drive)
 
 void corrupt_file(const int target,const unsigned long long int length)
 {
- const size_t block_length=8388608;
  char *data=NULL;
  unsigned long long int index;
  size_t block;
  index=0;
- block=block_length;
+ block=4096;
  data=get_memory(block);
- while(index<length)
+ while (index<length)
  {
-  if(length-index<=(unsigned long long int)block_length)
+  if ((length-index)<=(unsigned long long int)block)
   {
    block=(size_t)length-(size_t)index;
   }
