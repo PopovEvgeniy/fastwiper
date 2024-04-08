@@ -2,7 +2,7 @@
 
                 Free space wiping tool by Popov Evgeniy Alekseyevich             
 
-                           Version 0.9.9
+                           Version 1.0
 System requirement
 
 Operating system: Microsoft Windows 2000 or higher
@@ -44,6 +44,8 @@ Exit codes
 3 - Can't destroy the temporary file.
 4 - Can't decode command line argument.
 5 - Invalid amount of wipe pass.
+6 - Can't create temporary directory.
+7 - Can't destroy temporary directory.
 
 Source code
 
@@ -77,3 +79,4 @@ Version history
 0.9.6 - Memory usage reduced
 0.9.7 - Command line options changed
 0.9.8 - 0.9.9 - Small changes
+1.0 - Small bug fixed

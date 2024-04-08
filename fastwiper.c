@@ -3,6 +3,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -20,6 +21,8 @@ int create_temp_file(const char drive);
 unsigned long long int get_wiping_size(const char drive);
 void corrupt_file(const int target,const unsigned long long int length);
 void remove_temp_file(const char drive);
+void create_temp_directory(const char drive);
+void remove_temp_directory(const char drive);
 void do_wipe(const unsigned long int passes,const char drive);
 void work(const char *passes,const char *drive);
 
@@ -45,7 +48,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FAST WIPER");
- puts("Version 0.9.9");
+ puts("Version 1.0");
  puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2024 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -131,7 +134,7 @@ char *get_memory(const size_t length)
 
 int create_temp_file(const char drive)
 {
- char name[]="a:\\trash.tmp";
+ char name[]="a:\\trashdata\\trash.tmp";
  int target;
  name[0]=drive;
  target=open(name,O_WRONLY|O_CREAT|O_BINARY,S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH);
@@ -185,12 +188,36 @@ void corrupt_file(const int target,const unsigned long long int length)
 
 void remove_temp_file(const char drive)
 {
- char name[]="a:\\trash.tmp";
+ char name[]="a:\\trashdata\\trash.tmp";
  name[0]=drive;
  if (remove(name)!=0)
  {
   puts("Can't destroy temporary file");
   exit(3);
+ }
+
+}
+
+void create_temp_directory(const char drive)
+{
+ char target[]="a:\\trashdata";
+ target[0]=drive;
+ if (mkdir(target)==-1)
+ {
+  puts("Can't create temporary directory");
+  exit(6);
+ }
+
+}
+
+void remove_temp_directory(const char drive)
+{
+ char target[]="a:\\trashdata";
+ target[0]=drive;
+ if (rmdir(target)==-1)
+ {
+  puts("Can't destroy temporary directory");
+  exit(7);
  }
 
 }
@@ -211,5 +238,7 @@ void do_wipe(const unsigned long int passes,const char drive)
 void work(const char *passes,const char *drive)
 {
  check_drive(drive);
+ create_temp_directory(drive[0]);
  do_wipe(get_pass(passes),drive[0]);
+ remove_temp_directory(drive[0]);
 }
