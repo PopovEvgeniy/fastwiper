@@ -2,10 +2,10 @@
 
                 Free space wiping tool by Popov Evgeniy Alekseyevich             
 
-                           Version 1.0
+                           Version 1.0.7
 System requirement
 
-Operating system: Microsoft Windows 2000 or higher
+Operating system: Microsoft Windows NT 4.0 or higher
 1 megabyte of free RAM
 
 Program description
@@ -52,6 +52,10 @@ Source code
 The source code compiled under Open Watcom V2 Fork.
 But you can compile it under any modern C compiler.
 
+Note for MINGW–w64 and TDM–GCC users
+
+Don't forget to link your program with kernel32.lib.
+
 Contact
 
 You can send me a letter to tuzik87@inbox.ru
@@ -80,3 +84,6 @@ Version history
 0.9.7 - Command line options changed
 0.9.8 - 0.9.9 - Small changes
 1.0 - Small bug fixed
+1.0.1 - 1.0.3 - Small changes
+1.0.4 - Visual C++ support improved
+1.0.5 - 1.0.7 - Small changes

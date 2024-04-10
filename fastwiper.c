@@ -1,13 +1,4 @@
-#include <stddef.h>
-#include <stdio.h>
-#include <ctype.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <windows.h>
+#include "fastwiper.h"
 
 void show_intro();
 void show_help();
@@ -48,7 +39,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FAST WIPER");
- puts("Version 1.0");
+ puts("Version 1.0.7");
  puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2024 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -137,7 +128,7 @@ int create_temp_file(const char drive)
  char name[]="a:\\trashdata\\trash.tmp";
  int target;
  name[0]=drive;
- target=open(name,O_WRONLY|O_CREAT|O_BINARY,S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH);
+ target=open(name,O_WRONLY|O_CREAT|O_BINARY,S_IREAD|S_IWRITE);
  if(target==-1)
  {
   puts("Can't create temporary file");
