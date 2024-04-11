@@ -39,7 +39,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FAST WIPER");
- puts("Version 1.0.7");
+ puts("Version 1.0.8");
  puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2024 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -161,7 +161,7 @@ void corrupt_file(const int target,const unsigned long long int length)
  {
   if ((length-index)<=(unsigned long long int)block)
   {
-   block=(size_t)length-(size_t)index;
+   block=(size_t)(length-index);
   }
   if(write(target,data,block)==-1)
   {
