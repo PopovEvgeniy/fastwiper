@@ -2,7 +2,15 @@
   #pragma warning(disable : 4996)
 #endif
 
-#ifndef __GNUC__
+#ifdef __GNUC__
+ #define TROUBLE_COMPILER 1
+#endif
+
+#ifdef __TINYC__
+ #define TROUBLE_COMPILER 1
+#endif
+
+#ifndef TROUBLE_COMPILER
  #pragma comment(lib,"kernel32.lib")
 #endif
 
