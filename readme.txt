@@ -2,7 +2,7 @@
 
                 Free space wiping tool by Popov Evgeniy Alekseyevich             
 
-                           Version 1.0.9
+                           Version 1.1
 System requirement
 
 Operating system: Microsoft Windows NT 4.0 or higher
@@ -89,3 +89,4 @@ Version history
 1.0.5 - 1.0.7 - Small changes
 1.0.8 - Small bug fixed
 1.0.9 - Tiny C Compiler support added
+1.1 - Small changes
