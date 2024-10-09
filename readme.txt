@@ -1,36 +1,36 @@
                                 FAST WIPER
 
-                Free space-wiping tool by Popov Evgeniy Alekseyevich             
+                Free space wiping tool by Popov Evgeniy Alekseyevich             
 
-                           Version 1.1.0.1
-System requirement
+                           Version 1.1.1
+System requirements
 
 Operating system: Microsoft Windows NT 4.0 or higher
 1 megabyte of free RAM
 
 Program description
 
-This program lets you wipe free space on storage media. It will wipe by zero bytes.
-Deleted files can't be recovered with special software after finishing wiping free space.
+This program lets you wipe the free space on a storage media. It will be wiped by zero bytes.
+A deleted file can't be recovered with special software after finishing wiping the free space.
 
 License
 
-This program is distributed under GNU GENERAL PUBLIC LICENSE.
+This program is distributed under the GNU GENERAL PUBLIC LICENSE.
 
 Usage program
 
 This software is a console/text interface program.
-It takes the amount of wipe pass and drive letter (for example: c) as a command-line argument.
-The amount of wipe pass is an optional argument. The amount of wipe pass is 1 by default.
+It takes the amount of the wipe passes and a drive letter (for example: c) as the command-line arguments.
+The amount of wipe pass is an optional argument. It is 1 by default.
 
-Recommend the amount of wipe pass
+Recommended amount of wipe passes
 
-Recommend the amount of wipe pass to depend on your paranoia level. ;)
-Wipe time also depends on the amount of wipe pass.
+The recommended amount of the wipe passes depends on your paranoia level. ;)
+The wipe time also depends on the amount of wipe passes.
 
 1 - Normal for most cases.
 3 - Securely destroy important evidence.
-5 or more - Total destroy all shit. Also recommend for old hard drives.
+5 or more - Total destroy all data. Also recommended for old hard drives.
 
 File system compatibility
 
@@ -38,14 +38,14 @@ This program can't correctly work with FAT and FAT32.
 
 Exit codes
 
-0 - Operation successfully completed.
+0 - Operation was successfully completed.
 1 - Can't create the temporary file.
 2 - Can't allocate memory.
 3 - Can't destroy the temporary file.
-4 - Can't decode command-line argument.
-5 - Invalid amount of wipe pass.
-6 - Can't create a temporary directory.
-7 - Can't destroy temporary directory.
+4 - Can't decode a command-line argument.
+5 - Invalid amount of the wipe passes.
+6 - Can't create the temporary directory.
+7 - Can't destroy the temporary directory.
 
 Source code
 
@@ -91,3 +91,4 @@ Version history
 1.0.9 — Tiny C Compiler support has been added.
 1.1 — Small changes.
 1.1.0.1 – Documentation updated.
+1.1.1 — Small changes.

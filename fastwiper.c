@@ -39,21 +39,21 @@ void show_intro()
 {
  putchar('\n');
  puts("FAST WIPER");
- puts("Version 1.1");
+ puts("Version 1.1.1");
  puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2024 years");
- puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
+ puts("This program is distributed under GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
 }
 
 void show_help()
 {
- puts("You must give amount of wipe pass and drive letter as command line arguments!");
- puts("Amount of wipe pass is optional argument. Amount of wipe pass is 1 by default");
+ puts("You must give the amount of the wipe passes and a drive letter as the command-line arguments!");
+ puts("The amount of the wipe passes is an optional argument. It is 1 by default");
 }
 
 void show_pass(const unsigned long int pass,const unsigned long int total)
 {
- printf("Current wipe pass: %lu Total wipe passes: %lu",pass+1,total);
+ printf("The current wipe pass: %lu The total wipe passes: %lu",pass+1,total);
  putchar('\n');
 }
 
@@ -63,7 +63,7 @@ void show_progress(const unsigned long long int start,const unsigned long long i
  progress=(start+1)*100;
  progress/=end;
  putchar('\r');
- printf("Amount of processed bytes: %llu from %llu. Progress:%llu%%",start+1,end,progress);
+ printf("The amount of the processed bytes: %llu from %llu. Progress:%llu%%",start+1,end,progress);
 }
 
 void check_argument(const char *target)
@@ -74,7 +74,7 @@ void check_argument(const char *target)
  {
   if (isdigit(target[index])==0)
   {
-   puts("Can't decode command line argument");
+   puts("Can't decode a command-line argument");
    exit(4);
   }
 
@@ -92,7 +92,7 @@ void check_drive(const char *drive)
  }
  if (isalpha(target)==0)
  {
-  puts("Can't decode command line argument");
+  puts("Can't decode a command-line argument");
   exit(4);
  }
 
@@ -105,7 +105,7 @@ unsigned long int get_pass(const char *target)
  pass=atol(target);
  if (pass==0)
  {
-  puts("You must give positive non-zero value as amount of wipe pass");
+  puts("You must give a positive non-zero value as the amount of the wipe passes");
   exit(5);
  }
  return pass;
@@ -131,7 +131,7 @@ int create_temp_file(const char drive)
  target=open(name,O_WRONLY|O_CREAT|O_BINARY,S_IREAD|S_IWRITE);
  if(target==-1)
  {
-  puts("Can't create temporary file");
+  puts("Can't create the temporary file");
   exit(1);
  }
  return target;
@@ -183,7 +183,7 @@ void remove_temp_file(const char drive)
  name[0]=drive;
  if (remove(name)!=0)
  {
-  puts("Can't destroy temporary file");
+  puts("Can't destroy the temporary file");
   exit(3);
  }
 
@@ -195,7 +195,7 @@ void create_temp_directory(const char drive)
  target[0]=drive;
  if (mkdir(target)==-1)
  {
-  puts("Can't create temporary directory");
+  puts("Can't create the temporary directory");
   exit(6);
  }
 
@@ -207,7 +207,7 @@ void remove_temp_directory(const char drive)
  target[0]=drive;
  if (rmdir(target)==-1)
  {
-  puts("Can't destroy temporary directory");
+  puts("Can't destroy the temporary directory");
   exit(7);
  }
 
@@ -223,7 +223,7 @@ void do_wipe(const unsigned long int passes,const char drive)
   corrupt_file(create_temp_file(drive),get_wiping_size(drive));
   remove_temp_file(drive);
  }
- puts("Wipe complete");
+ puts("The wipe was successfully completed");
 }
 
 void work(const char *passes,const char *drive)
