@@ -2,7 +2,7 @@
 
                 Free space wiping tool by Popov Evgeniy Alekseyevich             
 
-                           Version 1.1.2
+                           Version 1.1.4
 System requirements
 
 Operating system: Microsoft Windows XP or higher
@@ -30,7 +30,7 @@ The wipe time also depends on the amount of wipe passes.
 
 1: Normal for most cases.
 3: Securely destroy important evidence.
-5 or more: Total destroy all data. Also recommended for old hard drives.
+5 or more: Totally destroy all data. Also recommended for old hard drives.
 
 File system compatibility
 
@@ -94,3 +94,4 @@ Version history
 1.1.1: The small changes.
 1.1.1.1-1.1.1.2: The documentation has been updated.
 1.1.2: The source code was recompiled under Tiny C Compiler.
+1.1.3-1.1.4: The small changes.

@@ -39,8 +39,8 @@ void show_intro()
 {
  putchar('\n');
  puts("FAST WIPER");
- puts("Version 1.1.2");
- puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2024 years");
+ puts("Version 1.1.4");
+ puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2025 years");
  puts("This program is distributed under GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
 }
@@ -63,7 +63,7 @@ void show_progress(const unsigned long long int start,const unsigned long long i
  progress=(start+1)*100;
  progress/=end;
  putchar('\r');
- printf("The amount of the processed bytes: %llu from %llu. Progress:%llu%%",start+1,end,progress);
+ printf("The amount of the processed bytes: %llu from %llu. Progress:%llu%%",start,end,progress);
 }
 
 void check_argument(const char *target)
@@ -142,7 +142,7 @@ unsigned long long int get_wiping_size(const char drive)
  unsigned long long int length;
  char disk[]="a:\\";
  disk[0]=drive;
- if(GetDiskFreeSpaceExA((LPCSTR)disk,NULL,NULL,(PULARGE_INTEGER)&length)==FALSE)
+ if (GetDiskFreeSpaceExA((LPCSTR)disk,(PULARGE_INTEGER)&length,NULL,NULL)==FALSE)
  {
   length=0;
  }
