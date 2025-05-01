@@ -14,6 +14,9 @@
  #pragma comment(lib,"kernel32.lib")
 #endif
 
+#define TRASH_DIRECTORY "a:\\trashdata"
+#define TRASH_FILE "a:\\trashdata\\trash.tmp"
+
 #include <stddef.h>
 #include <stdio.h>
 #include <ctype.h>

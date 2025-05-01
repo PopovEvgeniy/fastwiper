@@ -39,7 +39,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FAST WIPER");
- puts("Version 1.1.4");
+ puts("Version 1.1.5");
  puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2025 years");
  puts("This program is distributed under GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -125,7 +125,7 @@ char *get_memory(const size_t length)
 
 int create_temp_file(const char drive)
 {
- char name[]="a:\\trashdata\\trash.tmp";
+ char name[]=TRASH_FILE;
  int target;
  name[0]=drive;
  target=open(name,O_WRONLY|O_CREAT|O_BINARY,S_IREAD|S_IWRITE);
@@ -179,7 +179,7 @@ void corrupt_file(const int target,const unsigned long long int length)
 
 void remove_temp_file(const char drive)
 {
- char name[]="a:\\trashdata\\trash.tmp";
+ char name[]=TRASH_FILE;
  name[0]=drive;
  if (remove(name)!=0)
  {
@@ -191,7 +191,7 @@ void remove_temp_file(const char drive)
 
 void create_temp_directory(const char drive)
 {
- char target[]="a:\\trashdata";
+ char target[]=TRASH_DIRECTORY;
  target[0]=drive;
  if (mkdir(target)==-1)
  {
@@ -203,7 +203,7 @@ void create_temp_directory(const char drive)
 
 void remove_temp_directory(const char drive)
 {
- char target[]="a:\\trashdata";
+ char target[]=TRASH_DIRECTORY;
  target[0]=drive;
  if (rmdir(target)==-1)
  {
