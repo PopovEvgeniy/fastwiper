@@ -2,7 +2,7 @@
 
                 Free space wiping tool by Popov Evgeniy Alekseyevich             
 
-                           Version 1.1.5
+                           Version 1.1.5.1
 System requirements
 
 Operating system: Microsoft Windows XP or higher
@@ -20,13 +20,13 @@ This program is distributed under the GNU GENERAL PUBLIC LICENSE.
 Usage program
 
 This software is a console/text interface program.
-It takes the amount of the wipe passes and a drive letter (for example, c) as the command-line arguments.
+It takes the number of wipe passes and a drive letter (for example, c) as the command-line arguments.
 The amount of wipe pass is an optional argument. It is 1 by default.
 
 Recommended amount of wipe passes
 
-The recommended amount of the wipe passes depends on your paranoia level.
-The wipe time also depends on the amount of wipe passes.
+The recommended number of wipe passes depends on your paranoia level.
+The wipe time also depends on the number of wipe passes.
 
 1: Normal for most cases.
 3: Securely destroy important evidence.
@@ -55,10 +55,6 @@ But you can compile it under any modern C compiler.
 Note for MINGW-w64 and TDM-GCC users
 
 Don't forget to link your program with kernel32.lib.
-
-Contact
-
-You can send me a letter at tuzik87@inbox.ru.
 
 Version history
 
@@ -95,3 +91,4 @@ Version history
 1.1.1.1-1.1.1.2: The documentation has been updated.
 1.1.2: The source code was recompiled under Tiny C Compiler.
 1.1.3-1.1.5: The small changes.
+1.1.5.1: The documentation has been updated.
