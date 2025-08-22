@@ -39,16 +39,16 @@ void show_intro()
 {
  putchar('\n');
  puts("FAST WIPER");
- puts("Version 1.1.5");
- puts("Free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2025 years");
- puts("This program is distributed under GNU GENERAL PUBLIC LICENSE");
+ puts("Version 1.1.6");
+ puts("The free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2025 years");
+ puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
 }
 
 void show_help()
 {
- puts("You must give the amount of the wipe passes and a drive letter as the command-line arguments!");
- puts("The amount of the wipe passes is an optional argument. It is 1 by default");
+ puts("You must give the number of the wipe passes and a drive letter as the command-line arguments!");
+ puts("The number of the wipe passes is an optional argument. It is 1 by default");
 }
 
 void show_pass(const unsigned long int pass,const unsigned long int total)
@@ -63,7 +63,7 @@ void show_progress(const unsigned long long int start,const unsigned long long i
  progress=(start+1)*100;
  progress/=end;
  putchar('\r');
- printf("The amount of the processed bytes: %llu from %llu. Progress:%llu%%",start,end,progress);
+ printf("The amount of the processed bytes: %llu from %llu. The progress:%llu%%",start,end,progress);
 }
 
 void check_argument(const char *target)
@@ -105,7 +105,7 @@ unsigned long int get_pass(const char *target)
  pass=atol(target);
  if (pass==0)
  {
-  puts("You must give a positive non-zero value as the amount of the wipe passes");
+  puts("You must give a positive non-zero value as the number of the wipe passes");
   exit(5);
  }
  return pass;
