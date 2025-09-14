@@ -2,28 +2,28 @@
 
                 The free space wiping tool by Popov Evgeniy Alekseyevich
 
-                           Version 1.1.6
-System requirements
+                           Version 1.1.6.1
+System requirements.
 
-Operating system: Microsoft Windows 2000 or higher
-1 megabyte of free RAM
+Operating system: Microsoft Windows 2000 or higher.
+1 megabyte of free RAM.
 
-Program description
+The program description.
 
-This program lets you wipe the free space on a storage media. It will be wiped by zero bytes.
+This program lets you wipe the free space on a storage medium. It will be wiped by zero bytes.
 A deleted file can't be recovered with special software after finishing wiping the free space.
 
-License
+License.
 
 This program is distributed under the GNU GENERAL PUBLIC LICENSE.
 
-Usage program
+The program usage.
 
 This software is a console/text interface program.
 It takes the number of wipe passes and a drive letter (for example, c) as the command-line arguments.
 The number of wipe passes is an optional argument. It is 1 by default.
 
-Recommended number of the wipe passes
+The recommended number of wipe passes.
 
 The recommended number of wipe passes depends on your paranoia level.
 The wipe time also depends on the number of wipe passes.
@@ -32,11 +32,11 @@ The wipe time also depends on the number of wipe passes.
 3: Securely destroy the important evidence.
 5 or more: Totally destroy all data. Also recommended for old hard drives.
 
-File system compatibility
+The filesystem compatibility.
 
 This program can't correctly work with FAT and FAT32.
 
-Exit codes
+Exit codes.
 
 0: The operation was successfully completed.
 1: Can't create the temporary file.
@@ -47,18 +47,18 @@ Exit codes
 6: Can't create the temporary directory.
 7: Can't destroy the temporary directory.
 
-Source code
+The source code.
 
 The code was compiled under Open Watcom.
 But you can compile it under any modern C compiler.
 
-Note for MINGW-w64 and TDM-GCC users
+Note for MINGW-w64 and TDM-GCC users.
 
 Don't forget to link your program with kernel32.lib.
 
-Version history
+Version history.
 
-0.1: Initial version.
+0.1: The initial version.
 0.2: The small changes.
 0.3: The new command-line argument has been added.
 0.4: The small changes. The first public version.
@@ -93,3 +93,4 @@ Version history
 1.1.3-1.1.5: The small changes.
 1.1.5.1: The documentation has been updated.
 1.1.6: The small changes.
+1.1.6.1: The documentation has been updated.
