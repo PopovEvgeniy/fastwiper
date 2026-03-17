@@ -2,16 +2,15 @@
 
                 The free space wiping tool by Popov Evgeniy Alekseyevich
 
-                           Version 1.1.6.1
+                           Version 1.2
 System requirements.
 
 Operating system: Microsoft Windows 2000 or higher.
-1 megabyte of free RAM.
 
 The program description.
 
-This program lets you wipe the free space on a storage medium. It will be wiped by zero bytes.
-A deleted file can't be recovered with special software after finishing wiping the free space.
+This program lets you wipe the storage free space. It will be wiped by zero bytes.
+The deleted files can't be recovered with special software after finishing wiping the free space.
 
 License.
 
@@ -32,7 +31,7 @@ The wipe time also depends on the number of wipe passes.
 3: Securely destroy the important evidence.
 5 or more: Totally destroy all data. Also recommended for old hard drives.
 
-The filesystem compatibility.
+The file system compatibility.
 
 This program can't correctly work with FAT and FAT32.
 
@@ -94,3 +93,5 @@ Version history.
 1.1.5.1: The documentation has been updated.
 1.1.6: The small changes.
 1.1.6.1: The documentation has been updated.
+1.1.7: A small bug has been fixed.
+1.1.8-1.2: The small changes.
