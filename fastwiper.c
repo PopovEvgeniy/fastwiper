@@ -15,7 +15,7 @@ void remove_temp_directory(const char drive);
 unsigned long long int get_wiping_size(const char drive);
 void corrupt_file(const int target,const unsigned long long int length);
 void do_wipe(const unsigned long int passes,const char drive);
-void work(const char *passes,const char *drive);
+void work(const char *drive,const char *passes);
 
 int main(int argc, char *argv[])
 {
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
   work(argv[1],argv[2]);
   break;
   case 2:
-  work("1",argv[1]);
+  work(argv[1],"1");
   break;
   default:
   show_help();
@@ -39,7 +39,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FAST WIPER");
- puts("Version 1.2");
+ puts("Version 1.2.1");
  puts("The free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -47,7 +47,7 @@ void show_intro()
 
 void show_help()
 {
- puts("You must give the number of the wipe passes and a drive letter as the command-line arguments!");
+ puts("You must give a drive letter and the number of the wipe passes as the command-line arguments!");
  puts("The number of the wipe passes is an optional argument. It is 1 by default");
 }
 
@@ -221,7 +221,7 @@ void do_wipe(const unsigned long int passes,const char drive)
  puts("The wipe was successfully completed");
 }
 
-void work(const char *passes,const char *drive)
+void work(const char *drive,const char *passes)
 {
  check_drive(drive);
  create_temp_directory(drive[0]);

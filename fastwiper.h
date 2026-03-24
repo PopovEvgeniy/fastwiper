@@ -3,11 +3,11 @@
 #endif
 
 #ifdef __GNUC__
- #define TROUBLE_COMPILER 1
+ #define TROUBLE_COMPILER
 #endif
 
 #ifdef __TINYC__
- #define TROUBLE_COMPILER 1
+ #define TROUBLE_COMPILER
 #endif
 
 #ifndef TROUBLE_COMPILER
