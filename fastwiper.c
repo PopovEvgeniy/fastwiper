@@ -1,4 +1,5 @@
 #include "fastwiper.h"
+#include "settings.h"
 
 void show_intro();
 void show_help();
@@ -13,6 +14,7 @@ unsigned long int get_passes(const char *target);
 void create_temp_directory(const char drive);
 void remove_temp_directory(const char drive);
 unsigned long long int get_wiping_size(const char drive);
+void force_write(const int target,const size_t block,const size_t limit);
 void corrupt_file(const int target,const unsigned long long int length);
 void do_wipe(const unsigned long int passes,const char drive);
 void work(const char *drive,const char *passes);
@@ -39,7 +41,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FAST WIPER");
- puts("Version 1.2.1");
+ puts("Version 1.2.4");
  puts("The free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -180,17 +182,29 @@ unsigned long long int get_wiping_size(const char drive)
  return length;
 }
 
+void force_write(const int target,const size_t block,const size_t limit)
+{
+ static size_t written=0;
+ written+=block;
+ if (written>=limit)
+ {
+  _commit(target);
+  written=0;
+ }
+
+}
+
 void corrupt_file(const int target,const unsigned long long int length)
 {
  char *data=NULL;
  unsigned long long int index;
  size_t block;
  index=0;
- block=4096;
+ block=DATA_BLOCK_LENGTH;
  data=get_memory(block);
  while (index<length)
  {
-  if ((length-index)<=(unsigned long long int)block)
+  if ((length-index)<=DATA_BLOCK_LENGTH)
   {
    block=(size_t)(length-index);
   }
@@ -202,9 +216,12 @@ void corrupt_file(const int target,const unsigned long long int length)
   }
   index+=(unsigned long long int)block;
   show_progress(index,length);
+  force_write(target,DATA_BLOCK_LENGTH,DATA_LIMIT);
  }
  free(data);
  putchar('\n');
+ puts("Data synchronization in progress. Please wait");
+ _commit(target);
  close(target);
 }
 
