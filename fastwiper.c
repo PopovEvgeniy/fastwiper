@@ -41,7 +41,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FAST WIPER");
- puts("Version 1.2.4");
+ puts("Version 1.2.7");
  puts("The free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -68,7 +68,7 @@ void show_progress(const unsigned long long int start,const unsigned long long i
 int create_temp_file(const char drive)
 {
  char name[]=TRASH_FILE;
- int target;
+ int target=-1;
  name[0]=drive;
  target=open(name,O_CREAT|O_WRONLY|O_TRUNC|O_BINARY,S_IREAD|S_IWRITE);
  if(target==-1)
@@ -105,8 +105,17 @@ void remove_temp_file(const char drive)
 
 unsigned long int decode_argument(const char *target)
 {
- size_t index,length;
- length=strlen(target);
+ size_t index=0;
+ size_t length=0;
+ if (target!=NULL)
+ {
+  length=strlen(target);
+ }
+ if (length==0)
+ {
+  puts("Can't decode a command-line argument");
+  exit(4);
+ }
  for (index=0;index<length;++index)
  {
   if (isdigit(target[index])==0)
@@ -121,7 +130,12 @@ unsigned long int decode_argument(const char *target)
 
 void check_drive(const char *drive)
 {
- if (strlen(drive)!=1)
+ size_t length=0;
+ if (drive!=NULL)
+ {
+  length=strlen(drive);
+ }
+ if (length!=1)
  {
   puts("Can't decode a command-line argument");
   exit(4);
@@ -136,7 +150,7 @@ void check_drive(const char *drive)
 
 unsigned long int get_passes(const char *target)
 {
- unsigned long int passes;
+ unsigned long int passes=0;
  passes=decode_argument(target);
  if (passes==0)
  {
@@ -172,7 +186,7 @@ void remove_temp_directory(const char drive)
 
 unsigned long long int get_wiping_size(const char drive)
 {
- unsigned long long int length;
+ unsigned long long int length=0;
  char disk[]="a:\\";
  disk[0]=drive;
  if (GetDiskFreeSpaceExA((LPCSTR)disk,(PULARGE_INTEGER)&length,NULL,NULL)==FALSE)
@@ -197,10 +211,8 @@ void force_write(const int target,const size_t block,const size_t limit)
 void corrupt_file(const int target,const unsigned long long int length)
 {
  char *data=NULL;
- unsigned long long int index;
- size_t block;
- index=0;
- block=DATA_BLOCK_LENGTH;
+ unsigned long long int index=0;
+ size_t block=DATA_BLOCK_LENGTH;
  data=get_memory(block);
  while (index<length)
  {
@@ -227,7 +239,7 @@ void corrupt_file(const int target,const unsigned long long int length)
 
 void do_wipe(const unsigned long int passes,const char drive)
 {
- unsigned long int index;
+ unsigned long int index=0;
  puts("Wiping... Please wait");
  for (index=0;index<passes;++index)
  {
