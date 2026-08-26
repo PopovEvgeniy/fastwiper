@@ -45,7 +45,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FAST WIPER");
- puts("Version 1.3.4");
+ puts("Version 1.3.6");
  puts("The free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -204,15 +204,16 @@ void remove_temp_directory(const char drive)
 
 unsigned long long int get_free_space(const char drive)
 {
- unsigned long long int space=0;
  char disk[]="a:\\";
+ ULARGE_INTEGER space;
  disk[0]=drive;
- if (GetDiskFreeSpaceExA((LPCSTR)disk,(PULARGE_INTEGER)&space,NULL,NULL)==FALSE)
+ space.QuadPart=0;
+ if (GetDiskFreeSpaceExA((LPCSTR)disk,&space,NULL,NULL)==FALSE)
  {
   show_error("Can't get the disk free space");
   exit(GET_FREE_SPACE_ERROR);
  }
- return space;
+ return space.QuadPart;
 }
 
 size_t write_data(const int target,const unsigned char *buffer,const size_t length)
@@ -288,9 +289,11 @@ void do_wipe(const unsigned long int passes,const char drive)
  puts("Wiping... Please wait");
  for (index=0;index<passes;++index)
  {
+  create_temp_directory(drive);
   show_pass(index,passes);
   corrupt_file(create_temp_file(drive),space);
   remove_temp_file(drive);
+  remove_temp_directory(drive);
  }
  puts("The wipe was successfully completed");
 }
@@ -298,7 +301,5 @@ void do_wipe(const unsigned long int passes,const char drive)
 void work(const char *drive,const char *passes)
 {
  check_drive(drive);
- create_temp_directory(drive[0]);
  do_wipe(get_passes(passes),drive[0]);
- remove_temp_directory(drive[0]);
 }
