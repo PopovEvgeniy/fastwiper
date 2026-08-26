@@ -2,7 +2,7 @@
 
                 The free space wiping tool by Popov Evgeniy Alekseyevich
 
-                           Version 1.2.7
+                           Version 1.3.4
 System requirements.
 
 Operating system: Microsoft Windows 2000 or higher.
@@ -45,6 +45,8 @@ Exit codes.
 5: The invalid number of the wipe passes.
 6: Can't create the temporary directory.
 7: Can't destroy the temporary directory.
+8: Can't get the disk free space.
+9: The command-line arguments is invalid.
 
 The source code.
 
@@ -97,3 +99,6 @@ Version history.
 1.1.8-1.2.2: The small changes.
 1.2.3-1.2.4: The wiping process has improved.
 1.2.5-1.2.7: The small changes.
+1.2.8-1.2.9: The wiping process has improved.
+1.3-1.3.2: The error handling has improved.
+1.3.3-1.3.4: The small changes.
