@@ -45,7 +45,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FAST WIPER");
- puts("Version 1.3.6");
+ puts("Version 1.4");
  puts("The free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -59,7 +59,7 @@ void show_help()
 
 void show_pass(const unsigned long int pass,const unsigned long int total)
 {
- printf("The current wipe pass: %lu The total wipe passes: %lu",pass+1,total);
+ printf("The current wipe pass: %lu. The total wipe passes: %lu",pass,total);
  putchar('\n');
 }
 
@@ -204,7 +204,7 @@ void remove_temp_directory(const char drive)
 
 unsigned long long int get_free_space(const char drive)
 {
- char disk[]="a:\\";
+ char disk[]=DEFAULT_DRIVE;
  ULARGE_INTEGER space;
  disk[0]=drive;
  space.QuadPart=0;
@@ -271,7 +271,7 @@ void corrupt_file(const int target,const unsigned long long int length)
   {
    force_write(target,written,DATA_LIMIT);
   }
-  index+=block;
+  index+=written;
   show_progress(index,length);
  }
  free(data);
@@ -290,7 +290,7 @@ void do_wipe(const unsigned long int passes,const char drive)
  for (index=0;index<passes;++index)
  {
   create_temp_directory(drive);
-  show_pass(index,passes);
+  show_pass(index+1,passes);
   corrupt_file(create_temp_file(drive),space);
   remove_temp_file(drive);
   remove_temp_directory(drive);

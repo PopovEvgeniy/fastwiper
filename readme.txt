@@ -2,7 +2,7 @@
 
                 The free space wiping tool by Popov Evgeniy Alekseyevich
 
-                           Version 1.3.6
+                           Version 1.4
 System requirements.
 
 Operating system: Microsoft Windows 2000 or higher.
@@ -103,3 +103,4 @@ Version history.
 1.3-1.3.2: The error handling has improved.
 1.3.3-1.3.5: The small changes.
 1.3.6: The small bug has been fixed.
+1.3.7-1.4: The small changes.
