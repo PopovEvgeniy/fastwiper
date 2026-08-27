@@ -19,7 +19,7 @@ void remove_temp_directory(const char drive);
 unsigned long long int get_free_space(const char drive);
 size_t write_data(const int target,const unsigned char *buffer,const size_t length);
 void force_write(const int target,const size_t block,const size_t limit);
-void corrupt_file(const int target,const unsigned long long int length);
+void fill_zero_bytes(const int target,const unsigned long long int length);
 void do_wipe(const unsigned long int passes,const char drive);
 void work(const char *drive,const char *passes);
 
@@ -46,7 +46,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FAST WIPER");
- puts("Version 1.4.2");
+ puts("Version 1.4.6");
  puts("The free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -220,6 +220,11 @@ unsigned long long int get_free_space(const char drive)
   show_error("Can't get the disk free space");
   exit(GET_FREE_SPACE_ERROR);
  }
+ if (space.QuadPart==0)
+ {
+  show_error("The target disk is full");
+  exit(FULL_DISK_ERROR);
+ }
  return space.QuadPart;
 }
 
@@ -252,7 +257,7 @@ void force_write(const int target,const size_t block,const size_t limit)
 
 }
 
-void corrupt_file(const int target,const unsigned long long int length)
+void fill_zero_bytes(const int target,const unsigned long long int length)
 {
  unsigned char *data=NULL;
  unsigned long long int index=0;
@@ -276,12 +281,12 @@ void corrupt_file(const int target,const unsigned long long int length)
   else
   {
    force_write(target,written,DATA_LIMIT);
+   index+=written;
+   show_progress(index,length);
   }
-  index+=written;
-  show_progress(index,length);
+
  }
  free(data);
- show_message("Data synchronization in progress. Please wait");
  _commit(target);
  close(target);
 }
@@ -292,12 +297,10 @@ void do_wipe(const unsigned long int passes,const char drive)
  unsigned long long int space=0;
  for (index=0;index<passes;++index)
  {
-  create_temp_directory(drive);
   space=get_free_space(drive);
   show_pass(index+1,passes);
-  corrupt_file(create_temp_file(drive),space);
+  fill_zero_bytes(create_temp_file(drive),space);
   remove_temp_file(drive);
-  remove_temp_directory(drive);
  }
  show_message("The wipe was successfully completed");
 }
@@ -305,5 +308,7 @@ void do_wipe(const unsigned long int passes,const char drive)
 void work(const char *drive,const char *passes)
 {
  check_drive(drive);
+ create_temp_directory(drive[0]);
  do_wipe(get_passes(passes),drive[0]);
+ remove_temp_directory(drive[0]);
 }
