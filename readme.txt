@@ -2,7 +2,7 @@
 
                 The free space wiping tool by Popov Evgeniy Alekseyevich
 
-                           Version 1.4.6
+                           Version 1.5.2
 System requirements.
 
 Operating system: Microsoft Windows 2000 or higher.
@@ -11,25 +11,12 @@ The program description.
 
 This program lets you wipe the storage free space. It will be wiped by zero bytes.
 The deleted files can't be recovered with special software after finishing wiping the free space.
+This software is a console/text interface program.
+It takes a drive letter (for example, C) as the command-line argument.
 
 License.
 
 This program is distributed under the GNU GENERAL PUBLIC LICENSE.
-
-The program usage.
-
-This software is a console/text interface program.
-It takes a drive letter (for example, C) and the number of wipe passes as the command-line arguments.
-The number of wipe passes is an optional argument. It is 1 by default.
-
-The recommended number of wipe passes.
-
-The recommended number of wipe passes depends on your paranoia level.
-The wipe time also depends on the number of wipe passes.
-
-1: Normal for most cases.
-3: Securely destroy the important evidence.
-5 or more: Totally destroy all data. Also recommended for old hard drives.
 
 The file system compatibility.
 
@@ -42,12 +29,11 @@ Exit codes.
 2: Can't allocate memory.
 3: Can't destroy the temporary file.
 4: Can't decode a command-line argument.
-5: The invalid number of the wipe passes.
-6: Can't create the temporary directory.
-7: Can't destroy the temporary directory.
-8: Can't get the disk free space.
-9: The target disk is full.
-10: The command-line arguments is invalid.
+5: Can't create the temporary directory.
+6: Can't destroy the temporary directory.
+7: Can't get the disk free space.
+8: The target disk is full.
+9: The command-line arguments is invalid.
 
 The source code.
 
@@ -110,3 +96,9 @@ Version history.
 1.4.3: The wiping process has improved.
 1.4.4: The small changes.
 1.4.5-1.4.6: The wiping process has improved.
+1.4.7: The wiping process has been changed.
+1.4.8: The small changes.
+1.4.9: The error handling has improved.
+1.5: The small changes.
+1.5.1: The small bug has been fixed.
+1.5.2: The small changes.
