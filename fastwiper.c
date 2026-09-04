@@ -25,12 +25,11 @@ int main(int argc, char *argv[])
  show_intro();
  if (argc<2)
  {
-  show_message("You must give a drive letter as the command-line argument!");
+  puts("You must give a drive letter as the command-line argument!");
   exit(COMMAND_LINE_ARGUMENTS_ERROR);
  }
  else
  {
-  putchar('\n');
   work(argv[1]);
  }
  return 0;
@@ -39,9 +38,10 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("FAST WIPER 1.5.2");
+ puts("FAST WIPER 1.5.6");
  puts("The free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
+ putchar('\n');
 }
 
 void show_progress(const unsigned long long int start,const unsigned long long int end)
@@ -122,8 +122,8 @@ void check_drive(const char *drive)
  }
  if (isalpha(drive[0])==0)
  {
-  show_error("Can't decode a command-line argument");
-  exit(DECODE_ARGUMENT_ERROR);
+  show_error("The drive letter is invalid");
+  exit(INVALID_DRIVE_ERROR);
  }
 
 }
@@ -134,8 +134,12 @@ void create_temp_directory(const char drive)
  target[0]=drive;
  if (mkdir(target)==-1)
  {
-  show_system_error("Can't create the temporary directory",errno);
-  exit(CREATE_DIRECTORY_ERROR);
+  if (errno!=EEXIST)
+  {
+   show_system_error("Can't create the temporary directory",errno);
+   exit(CREATE_DIRECTORY_ERROR);
+  }
+
  }
 
 }
@@ -146,12 +150,8 @@ void remove_temp_directory(const char drive)
  target[0]=drive;
  if (rmdir(target)==-1)
  {
-  if (errno!=EEXIST)
-  {
-   show_system_error("Can't destroy the temporary directory",errno);
-   exit(DESTROY_DIRECTORY_ERROR);
-  }
-
+  show_system_error("Can't destroy the temporary directory",errno);
+  exit(DESTROY_DIRECTORY_ERROR);
  }
 
 }
@@ -222,7 +222,8 @@ void fill_zero_bytes(const int target,const unsigned long long int length)
   written=write_data(target,data,block);
   if (written==0)
   {
-   show_message("Can't totally wipe the free space");
+   show_message(strerror(errno));
+   puts("Can't totally wipe the free space");
    break;
   }
   else
