@@ -2,7 +2,7 @@
 
                 The free space wiping tool by Popov Evgeniy Alekseyevich
 
-                           Version 1.5.6
+                           Version 1.5.7
 System requirements.
 
 Operating system: Microsoft Windows 2000 or higher.
@@ -43,7 +43,7 @@ But you can compile it under any modern C compiler.
 
 Note for MINGW-w64 and TDM-GCC users.
 
-Don't forget to link your program with kernel32.lib.
+Don't forget to link your program with libkernel32.a.
 
 Version history.
 
@@ -106,3 +106,4 @@ Version history.
 1.5.3: The small bug has been fixed.
 1.5.4-1.5.5: The small changes.
 1.5.6: The error handling has improved.
+1.5.7: The small changes.

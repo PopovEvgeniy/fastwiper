@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("FAST WIPER 1.5.6");
+ puts("FAST WIPER 1.5.7");
  puts("The free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -162,7 +162,7 @@ unsigned long long int get_free_space(const char drive)
  ULARGE_INTEGER space;
  disk[0]=drive;
  space.QuadPart=0;
- if (GetDiskFreeSpaceExA((LPCSTR)disk,&space,NULL,NULL)==FALSE)
+ if (GetDiskFreeSpaceExA((LPCSTR)disk,NULL,NULL,&space)==FALSE)
  {
   show_error("Can't get the disk free space");
   exit(GET_FREE_SPACE_ERROR);
