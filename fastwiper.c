@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("FAST WIPER 1.5.8");
+ puts("FAST WIPER 1.5.9");
  puts("The free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -214,7 +214,7 @@ void fill_zero_bytes(const int target,const unsigned long long int length)
  while (index<length)
  {
   elapsed=length-index;
-  if (elapsed<=DATA_BLOCK_LENGTH)
+  if (elapsed<DATA_BLOCK_LENGTH)
   {
    block=(size_t)elapsed;
   }
