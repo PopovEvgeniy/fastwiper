@@ -17,7 +17,6 @@ unsigned long long int get_free_space(const char drive);
 size_t write_data(const int target,const unsigned char *buffer,const size_t length);
 void force_write(const int target,const size_t block,const size_t limit);
 void fill_zero_bytes(const int target,const unsigned long long int length);
-void do_wipe(const unsigned long int passes,const char drive);
 void work(const char *drive);
 
 int main(int argc, char *argv[])
@@ -38,7 +37,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("FAST WIPER 1.5.7");
+ puts("FAST WIPER 1.5.8");
  puts("The free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
