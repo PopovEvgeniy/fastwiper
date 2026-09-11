@@ -22,14 +22,19 @@ void work(const char *drive);
 int main(int argc, char *argv[])
 {
  show_intro();
- if (argc<2)
+ switch (argc)
  {
+  case 1:
   puts("You must give a drive letter as the command-line argument!");
   exit(COMMAND_LINE_ARGUMENTS_ERROR);
- }
- else
- {
+  break;
+  case 2:
   work(argv[1]);
+  break;
+  default:
+  puts("You gave too many command-line arguments");
+  exit(COMMAND_LINE_ARGUMENTS_ERROR);
+  break;
  }
  return 0;
 }
@@ -37,7 +42,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("FAST WIPER 1.6");
+ puts("FAST WIPER 1.6.1");
  puts("The free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
