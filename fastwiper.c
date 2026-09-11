@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("FAST WIPER 1.5.9");
+ puts("FAST WIPER 1.6");
  puts("The free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -176,13 +176,24 @@ unsigned long long int get_free_space(const char drive)
 
 size_t write_data(const int target,const unsigned char *buffer,const size_t length)
 {
- int written=0;
+ ptrdiff_t written=0;
  size_t total=0;
- for (total=0;total<length;total+=written)
+ while (total<length)
  {
   written=write(target,buffer+total,length-total);
-  if (written<=0)
+  if (written>0)
   {
+   total+=written;
+  }
+  if (written==0)
+  {
+   show_error("Can't totally wipe the free space. The number of written bytes is invalid: 0");
+   total=0;
+   break;
+  }
+  if (written==-1)
+  {
+   show_system_error("Can't totally wipe the free space",errno);
    total=0;
    break;
   }
@@ -221,8 +232,6 @@ void fill_zero_bytes(const int target,const unsigned long long int length)
   written=write_data(target,data,block);
   if (written==0)
   {
-   show_message(strerror(errno));
-   puts("Can't totally wipe the free space");
    break;
   }
   else
@@ -245,5 +254,5 @@ void work(const char *drive)
  fill_zero_bytes(create_temp_file(drive[0]),get_free_space(drive[0]));
  remove_temp_file(drive[0]);
  remove_temp_directory(drive[0]);
- show_message("The process is completed");
+ show_message("The process is complete");
 }
