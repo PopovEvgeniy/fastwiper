@@ -2,7 +2,7 @@
 
                 The free space wiping tool by Popov Evgeniy Alekseyevich
 
-                           Version 1.6.1
+                           Version 1.6.1.1
 System requirements.
 
 Operating system: Microsoft Windows 2000 or higher.
@@ -51,7 +51,7 @@ Version history.
 0.2: The small changes.
 0.3: The new command-line argument has been added.
 0.4: The small changes. The first public version.
-0.5: The memory usage has reduced.
+0.5: The memory usage has been reduced.
 0.6-0.7: The small changes.
 0.7.0.1: The documentation has been updated.
 0.7.1-0.7.4: The small changes.
@@ -65,12 +65,12 @@ Version history.
 0.9.1-0.9.2: The small changes.
 0.9.2.1: The documentation has been updated.
 0.9.3-0.9.5: The small changes.
-0.9.6: The memory usage has reduced.
+0.9.6: The memory usage has been reduced.
 0.9.7: A command-line option has been changed.
 0.9.8-0.9.9: The small changes.
 1.0: The small bug has been fixed.
 1.0.1-1.0.3: The small changes.
-1.0.4: Visual C++ support has improved.
+1.0.4: Visual C++ support has been improved.
 1.0.5-1.0.7: The small changes
 1.0.8: A small bug has been fixed.
 1.0.9: Tiny C Compiler support has been added.
@@ -85,27 +85,28 @@ Version history.
 1.1.6.1: The documentation has been updated.
 1.1.7: A small bug has been fixed.
 1.1.8-1.2.2: The small changes.
-1.2.3-1.2.4: The wiping process has improved.
+1.2.3-1.2.4: The wiping process has been improved.
 1.2.5-1.2.7: The small changes.
-1.2.8-1.2.9: The wiping process has improved.
-1.3-1.3.2: The error handling has improved.
+1.2.8-1.2.9: The wiping process has been improved.
+1.3-1.3.2: The error handling has been improved.
 1.3.3-1.3.5: The small changes.
 1.3.6: The small bug has been fixed.
 1.3.7-1.4: The small changes.
-1.4.1: The wiping process has improved.
+1.4.1: The wiping process has been improved.
 1.4.2: The small changes.
-1.4.3: The wiping process has improved.
+1.4.3: The wiping process has been improved.
 1.4.4: The small changes.
-1.4.5-1.4.6: The wiping process has improved.
+1.4.5-1.4.6: The wiping process has been improved.
 1.4.7: The wiping process has been changed.
 1.4.8: The small changes.
-1.4.9: The error handling has improved.
+1.4.9: The error handling has been improved.
 1.5: The small changes.
 1.5.1: The small bug has been fixed.
 1.5.2: The small changes.
 1.5.3: The small bug has been fixed.
 1.5.4-1.5.5: The small changes.
-1.5.6: The error handling has improved.
+1.5.6: The error handling has been improved.
 1.5.7-1.5.9: The small changes.
-1.6: The wiping process has improved.
+1.6: The wiping process has been improved.
 1.6.1: The small changes.
+1.6.1.1: The documentation has been updated.
