@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
   work(argv[1]);
   break;
   default:
-  puts("You gave too many command-line arguments");
+  show_error("You gave too many command-line arguments");
   exit(COMMAND_LINE_ARGUMENTS_ERROR);
   break;
  }
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("FAST WIPER 1.6.1");
+ puts("FAST WIPER 1.6.2");
  puts("The free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -52,6 +52,7 @@ void show_progress(const unsigned long long int start,const unsigned long long i
 {
  putchar('\r');
  printf("The amount of the processed bytes: %llu from %llu. The progress:%llu%%",start,end,(start*100)/end);
+ fflush(stdout);
 }
 
 void show_message(const char *message)

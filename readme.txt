@@ -2,7 +2,7 @@
 
                 The free space wiping tool by Popov Evgeniy Alekseyevich
 
-                           Version 1.6.1.1
+                           Version 1.6.2
 System requirements.
 
 Operating system: Microsoft Windows 2000 or higher.
@@ -34,7 +34,7 @@ Exit codes.
 7: Can't destroy the temporary directory.
 8: Can't get the disk free space.
 9: The target disk is full.
-10: The command-line arguments is invalid.
+10: The command-line arguments are invalid.
 
 The source code.
 
@@ -55,7 +55,7 @@ Version history.
 0.6-0.7: The small changes.
 0.7.0.1: The documentation has been updated.
 0.7.1-0.7.4: The small changes.
-0.7.5: The small bug has been fixed.
+0.7.5: A minor bug has been fixed.
 0.7.6-0.8: The small changes.
 0.8.1: A small bug has been fixed.
 0.8.2: The small changes.
@@ -68,7 +68,7 @@ Version history.
 0.9.6: The memory usage has been reduced.
 0.9.7: A command-line option has been changed.
 0.9.8-0.9.9: The small changes.
-1.0: The small bug has been fixed.
+1.0: A minor bug has been fixed.
 1.0.1-1.0.3: The small changes.
 1.0.4: Visual C++ support has been improved.
 1.0.5-1.0.7: The small changes
@@ -90,7 +90,7 @@ Version history.
 1.2.8-1.2.9: The wiping process has been improved.
 1.3-1.3.2: The error handling has been improved.
 1.3.3-1.3.5: The small changes.
-1.3.6: The small bug has been fixed.
+1.3.6: A minor bug has been fixed.
 1.3.7-1.4: The small changes.
 1.4.1: The wiping process has been improved.
 1.4.2: The small changes.
@@ -101,12 +101,13 @@ Version history.
 1.4.8: The small changes.
 1.4.9: The error handling has been improved.
 1.5: The small changes.
-1.5.1: The small bug has been fixed.
+1.5.1: A minor bug has been fixed.
 1.5.2: The small changes.
-1.5.3: The small bug has been fixed.
+1.5.3: A minor bug has been fixed.
 1.5.4-1.5.5: The small changes.
 1.5.6: The error handling has been improved.
 1.5.7-1.5.9: The small changes.
 1.6: The wiping process has been improved.
 1.6.1: The small changes.
 1.6.1.1: The documentation has been updated.
+1.6.2: The small changes.
