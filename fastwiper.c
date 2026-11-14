@@ -16,6 +16,7 @@ void create_temp_directory(const char drive);
 void remove_temp_directory(const char drive);
 unsigned long long int get_free_space(const char drive);
 size_t write_data(const int target,const unsigned char *buffer,const size_t length);
+void sync_data(const int target);
 void force_write(const int target,const size_t block,const size_t limit);
 void fill_zero_bytes(const int target,const unsigned long long int length);
 void work(const char *drive);
@@ -43,7 +44,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("FAST WIPER 1.6.3");
+ puts("FAST WIPER 1.6.5");
  puts("The free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -221,13 +222,23 @@ size_t write_data(const int target,const unsigned char *buffer,const size_t leng
  return total;
 }
 
+void sync_data(const int target)
+{
+ if (_commit(target)==-1)
+ {
+  show_system_error("Can't synchronize data",errno);
+  exit(SYNC_DATA_ERROR);
+ }
+
+}
+
 void force_write(const int target,const size_t block,const size_t limit)
 {
  static size_t written=0;
  written+=block;
  if (written>=limit)
  {
-  _commit(target);
+  sync_data(target);
   written=0;
  }
 
@@ -262,15 +273,19 @@ void fill_zero_bytes(const int target,const unsigned long long int length)
 
  }
  free(data);
- _commit(target);
+ sync_data(target);
  close(target);
 }
 
 void work(const char *drive)
 {
+ int target=-1;
+ unsigned long long int space=0;
  check_drive(drive);
  create_temp_directory(drive[0]);
- fill_zero_bytes(create_temp_file(drive[0]),get_free_space(drive[0]));
+ target=create_temp_file(drive[0]);
+ space=get_free_space(drive[0]);
+ fill_zero_bytes(target,space);
  remove_temp_file(drive[0]);
  remove_temp_directory(drive[0]);
  show_message("The process is complete");
