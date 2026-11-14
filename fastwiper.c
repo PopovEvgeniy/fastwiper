@@ -8,6 +8,7 @@ void show_message(const char *message);
 void show_error(const char *message);
 void show_system_error(const char *message,const int code);
 int create_temp_file(const char drive);
+unsigned long long int get_position(const int target);
 unsigned char *get_memory(const size_t length);
 void remove_temp_file(const char drive);
 void check_drive(const char *drive);
@@ -42,7 +43,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("FAST WIPER 1.6.2");
+ puts("FAST WIPER 1.6.3");
  puts("The free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -149,6 +150,18 @@ void create_temp_directory(const char drive)
 
 }
 
+unsigned long long int get_position(const int target)
+{
+ long long int position=-1;
+ position=_lseeki64(target,0,SEEK_CUR);
+ if (position==-1)
+ {
+  show_system_error("Can't get the current offset",errno);
+  exit(GET_FILE_POSITION_ERROR);
+ }
+ return position;
+}
+
 void remove_temp_directory(const char drive)
 {
  char target[]=TRASH_DIRECTORY;
@@ -243,7 +256,7 @@ void fill_zero_bytes(const int target,const unsigned long long int length)
   else
   {
    force_write(target,written,DATA_LIMIT);
-   index+=written;
+   index=get_position(target);
    show_progress(index,length);
   }
 
