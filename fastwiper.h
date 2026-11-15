@@ -2,6 +2,12 @@
   #pragma warning(disable : 4996)
 #endif
 
+#ifndef __WATCOMC__
+#define SYNCHRONIZATION_ERROR -1
+#else
+#define SYNCHRONIZATION_ERROR 0
+#endif
+
 #ifdef __GNUC__
  #define TROUBLE_COMPILER
 #endif

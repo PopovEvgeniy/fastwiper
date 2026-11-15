@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("FAST WIPER 1.6.7");
+ puts("FAST WIPER 1.6.8");
  puts("The free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE (version 2 or later) terms");
  putchar('\n');
@@ -233,7 +233,7 @@ size_t write_data(const int target,const unsigned char *buffer,const size_t leng
 
 void sync_data(const int target)
 {
- if (_commit(target)==-1)
+ if (_commit(target)==SYNCHRONIZATION_ERROR)
  {
   show_system_error("Can't synchronize data",errno);
   exit(SYNC_DATA_ERROR);
