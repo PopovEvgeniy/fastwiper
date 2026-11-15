@@ -44,9 +44,9 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("FAST WIPER 1.6.5");
+ puts("FAST WIPER 1.6.7");
  puts("The free space wiping tool by Popov Evgeniy Alekseyevich, 2016-2026 years");
- puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
+ puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE (version 2 or later) terms");
  putchar('\n');
 }
 
@@ -207,15 +207,24 @@ size_t write_data(const int target,const unsigned char *buffer,const size_t leng
   }
   if (written==0)
   {
-   show_error("Can't totally wipe the free space. The number of written bytes is invalid: 0");
-   total=0;
-   break;
+   show_system_error("The number of written bytes is invalid: 0",errno);
+   exit(WRITE_ZERO_BYTES_ERROR);
   }
   if (written==-1)
   {
-   show_system_error("Can't totally wipe the free space",errno);
-   total=0;
-   break;
+   if (errno==ENOSPC)
+   {
+    show_message("No space left");
+    errno=0;
+    total=0;
+    break;
+   }
+   else
+   {
+    show_system_error("Can't write data",errno);
+    exit(WRITE_DATA_ERROR);
+   }
+
   }
 
  }

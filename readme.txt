@@ -2,7 +2,7 @@
 
                 The free space wiping tool by Popov Evgeniy Alekseyevich
 
-                           Version 1.6.5
+                           Version 1.6.7
 System requirements.
 
 Operating system: Microsoft Windows 2000 or higher.
@@ -16,7 +16,7 @@ It takes a drive letter (for example, C) as the command-line argument.
 
 License.
 
-This program is distributed under the GNU GENERAL PUBLIC LICENSE.
+This program is distributed under the GNU GENERAL PUBLIC LICENSE (version 2 or later) terms.
 
 The file system compatibility.
 
@@ -27,16 +27,18 @@ Exit codes.
 0: The operation was successfully completed.
 1: Can't create the temporary file.
 2: Can't get the current offset.
-3: Can't synchronize data.
-4: Can't allocate memory.
-5: Can't destroy the temporary file.
-6: Can't decode a command-line argument.
-7: The drive letter is invalid.
-8: Can't create the temporary directory.
-9: Can't destroy the temporary directory.
-10: Can't get the disk free space.
-11: The target disk is full.
-12: The command-line arguments are invalid.
+3: The number of written bytes is invalid: 0.
+4: Can't write data.
+5: Can't synchronize data.
+6: Can't allocate memory.
+7: Can't destroy the temporary file.
+8: Can't decode a command-line argument.
+9: The drive letter is invalid.
+10: Can't create the temporary directory.
+11: Can't destroy the temporary directory.
+12: Can't get the disk free space.
+13: The target disk is full.
+14: The command-line arguments are invalid.
 
 The source code.
 
@@ -115,4 +117,4 @@ Version history.
 1.6.2: The small changes.
 1.6.3: The wiping process has been improved.
 1.6.4: The small changes.
-1.6.5: The wiping process has been improved.
+1.6.5-1.6.7: The wiping process has been improved.
